@@ -1326,18 +1326,67 @@ padding: 100px;
     color: #666;
 }
 
-
-
-
-
-
-
-
-
-
-/* Responsividade rápida */
 @media (max-width: 768px) {
-    .hero-title { font-size: 3.5rem; }
-    .hero-title span { font-size: 4.5rem; }
-    .carousel-container { margin-top: -100px; }
+    .hero-sports {
+        height: 60vh; /* Menor em celulares */
+        text-align: center;
+    }
+
+    .hero-wrapper {
+        justify-content: center !important; /* Centraliza o texto no mobile */
+    }
+
+    .hero-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-brand-logo {
+        max-width: 150px; /* Logo menor no celular */
+    }
 }
+@media (max-width: 480px) {
+    .carousel-container {
+        gap: 15px;
+        padding-left: 20px; /* Margem de respiro na esquerda */
+        padding-right: 20px;
+        margin-top: -30px; /* Menos sobreposição no mobile */
+    }
+
+    .product-card {
+        min-width: 260px; /* Card um pouco menor para caber na percepção visual */
+        height: 480px;
+    }
+
+    .bg-logo-blur, .bg-nfl-text {
+        font-size: 5rem; /* Diminui a marca d'água para não poluir */
+    }
+}
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Uma coluna por linha */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-form {
+        flex-direction: column; /* Input em cima, botão embaixo */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
