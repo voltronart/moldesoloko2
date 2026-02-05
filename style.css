@@ -1,0 +1,1343 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    background: #000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa no mínimo a altura total da tela */ 
+}
+main {
+    flex: 1; /* O "main" cresce para preencher o espaço vazio, empurrando o footer */
+}
+/* --- SECTIONS HERO (BANNER) --- */
+.hero-sports {
+    height: 90vh; /* Aumentado para dar espaço ao carrossel */
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Degradê para o texto não sumir no fundo */
+.nba-theme { 
+    background-image: linear-gradient(to right, #000 20%, transparent 80%), 
+                      url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200'); 
+}
+
+.nfl-theme { 
+    background-image: linear-gradient(to left, #000 20%, transparent 80%), 
+                      url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1200'); 
+}
+.fifa-theme{
+    background-image: linear-gradient(to right, #000000 15%,transparent 85%),
+    url('futebol.jpg');
+}
+.hero-wrapper { 
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    z-index: 2;
+}
+
+.hero-reverse .hero-wrapper { display: flex; 
+    justify-content: flex-end;
+     text-align: right; 
+    }
+
+
+.hero-subtitle { font-size: 1rem; 
+    text-transform: uppercase; 
+    color: #ffcc00; 
+    letter-spacing: 5px; 
+}
+
+
+.cesta{
+    display: inline-block;
+    padding: 18px 50px;
+    background: #ffffff;
+    background: linear-gradient(134deg, rgba(255, 255, 255, 1) 14%, rgba(23, 64, 139, 1) 47%, rgba(201, 8, 42, 1) 81%);
+    color: #ffffff;
+    text-decoration: none;
+    
+    margin-top: 30px;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* Botão inclinado/esportivo */
+    transition: 0.3s;
+}
+.btn-main {
+    align-self: flex-end; /* Garante que o botão não estique e fique na direita */
+    background: #013369; /* Azul Oficial NFL */
+    color: #ffffff;
+    border: 2px solid #d50a0a; /* Detalhe em Vermelho NFL */
+    padding: 18px 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%); /* Inclinação oposta à da NBA */
+    text-decoration: none;
+    transition: 0.3s;
+}
+.gol{
+    display: inline-block;
+    padding: 18px 50px;
+    background: #0435d6;
+    color: #ffffff;
+    text-decoration: none;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* Botão inclinado/esportivo */
+    transition: 0.3s;
+}
+.btn-main:hover {
+    background: #d50a0a;
+    border-color: #013369;
+    transform: skewX(-5deg); /* Efeito de velocidade */
+}
+
+/* --- CARROSSEL INTEGRADO (O SEGREDO) --- */
+.carousel-container {
+    position: relative;
+    margin-top: -30px; /* PUXA OS PRODUTOS PARA CIMA DA IMAGEM */
+    z-index: 10;
+    padding: 0 5% 80px 5%;
+    display: flex;
+    align-items: center;
+}
+
+/* Este é o segredo para os cards ficarem um ao lado do outro */
+.product-trackgolden {
+    display: flex;            /* Alinha em linha */
+    overflow-x: auto;         /* Permite rolar se for maior que a tela */
+    gap: 20px;                /* Espaço entre os cards */
+    padding: 40px 5%;         /* Espaço interno */
+    margin-bottom: 50px;      /* Empurra a seção debaixo (NFL) para baixo */
+    scrollbar-width: none;    /* Esconde barra no Firefox */
+}
+
+.product-trackgolden::-webkit-scrollbar {
+    display: none;            /* Esconde barra no Chrome */
+}
+
+
+
+
+.product-card {
+/* 1. Trava a Largura */
+    min-width: 300px !important; 
+    max-width: 300px !important;
+
+    /* 2. Trava a Altura */
+    height: 500px !important; /* Altura fixa para todos */
+    
+    /* 3. Organização Interna */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o botão para o final e o topo para cima */
+    
+    padding: 30px !important;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.product-card:hover { 
+    transform: translateY(-15px); 
+    border-color: #ffcc00; 
+    background: rgba(30, 30, 30, 0.9);
+}
+
+.product-card img { 
+    width: 100%; 
+    height: 320px; 
+    object-fit: cover; 
+    filter: grayscale(30%); 
+    transition: 0.3s;
+}
+
+.product-card:hover img {
+     filter: grayscale(0%);
+     }
+
+.product-info { 
+    padding: 20px;
+     text-align: center;
+     }
+.product-info h4 { 
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold; font-size: 1rem; 
+    margin-bottom: 5px; 
+}
+.price { color: #ffcc00; 
+    font-size: 1.4rem;
+     font-weight: 900; 
+    }
+
+.hero-logo-box {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    /* Se quiser a logo à direita na versão reverse: */
+    justify-content: flex-start; 
+}
+
+.hero-reverse .hero-logo-box {
+    justify-content: flex-end;
+}
+
+.hero-brand-logo {
+    max-width: 350px; /* Tamanho da logo */
+    height: auto;
+    /* O "pulo do gato": um brilho suave na logo para destacar do fundo */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.hero-brand-logo:hover {
+    transform: scale(1.05); /* Leve interação ao passar o mouse */
+}
+
+/* Ajuste no subtitle para não ficar colado na logo */
+.hero-subtitle {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #ffcc00;
+    letter-spacing: 4px;
+}
+
+
+.nfl-theme.hero-reverse .hero-wrapper {
+    display: flex;
+    justify-content: flex-end; /* Empurra tudo para a direita */
+    text-align: right;
+}
+
+.nfl-theme .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinha subtítulo, logo e botão à direita */
+}
+
+/* 2. Estilo da Logo NFL */
+.logo-nfl {
+    margin: 20px 0;
+    display: block;
+}
+
+.hero-nfl {
+    max-width: 220px; /* Logos da NFL costumam ser mais verticais, ajuste conforme necessário */
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(27, 64, 121, 0.6)); /* Brilho azul marinho NFL */
+    transition: transform 0.3s ease;
+}
+
+.hero-nfl:hover {
+    transform: scale(1.05) rotate(2deg); /* Pequena rotação para estilo esportivo */
+}
+
+/* Estilo Base do Card Warriors */
+.product-card.warriors-special {
+    position: relative;
+    background: linear-gradient(135deg, #1D428A 0%, #002D62 100%); /* Azul Royal GSW */
+    border: 2px solid #FFC72C; /* Amarelo California */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+/* Efeito de Hover */
+.product-card.warriors-special:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(255, 199, 44, 0.2);
+    border-color: #fff;
+}
+
+/* Badge (Etiqueta) */
+.card-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #FFC72C;
+    color: #1D428A;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+/* Imagem do Produto */
+.product-card.warriors-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain; /* Garante que a camisa não corte */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos */
+.category-text {
+    font-size: 0.65rem;
+    color: #FFC72C;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-card.warriors-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.product-card.warriors-special .price {
+    color: #FFC72C;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+/* Botão Customizado */
+.product-card.warriors-special .btn-add {
+    background: #FFC72C;
+    color: #1D428A;
+    border: none;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.product-card.warriors-special .btn-add:hover {
+    background: #fff;
+    color: #1D428A;
+    transform: scale(1.05);
+}
+
+/* Marca d'água de fundo */
+.bg-logo-blur {
+    position: absolute;
+    bottom: -20px;
+    left: -10px;
+    font-size: 6rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Estilo Base do Card Lakers */
+.product-card.lakers-special {
+    position: relative;
+    background: linear-gradient(135deg, #552583 0%, #2b1244 100%); /* Roxo Lakers */
+    border: 2px solid #FDB927; /* Ouro Lakers */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de Hover */
+.product-card.lakers-special:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(85, 37, 131, 0.6);
+    border-color: #fff;
+}
+
+/* Badge (Etiqueta Ouro) */
+.product-card.lakers-special .card-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #FDB927;
+    color: #552583;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Imagem do Produto com Brilho Superior */
+.product-card.lakers-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos Lakers */
+.lakers-special .category-text {
+    font-size: 0.65rem;
+    color: #FDB927;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+}
+
+.product-card.lakers-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 5px 0 10px 0;
+}
+
+.product-card.lakers-special .price {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Botão Ouro com Texto Roxo */
+.product-card.lakers-special .btn-add {
+    background: #FDB927;
+    color: #552583;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.product-card.lakers-special .btn-add:hover {
+    background: #fff;
+    color: #552583;
+    letter-spacing: 2px;
+}
+
+/* Número 23 gigante ao fundo */
+.bg-number {
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(253, 185, 39, 0.08); /* Ouro bem clarinho */
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Estilo Base do Card Chicago Bulls */
+.product-card.bulls-special {
+    position: relative;
+    background: linear-gradient(135deg, #ce1141 0%, #900a2a 100%); /* Vermelho Chicago */
+    border: 2px solid #000; /* Borda Preta Profunda */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de Hover */
+.product-card.bulls-special:hover {
+    transform: translateY(-12px) ; /* Leve inclinação para agressividade */
+    box-shadow: 0 20px 40px rgba(206, 17, 65, 0.4);
+    border-color: #fff;
+}
+
+/* Badge (Etiqueta Preta) */
+.product-card.bulls-special .card-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #000;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Imagem do Produto */
+.product-card.bulls-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.7)); /* Sombra mais forte */
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos Bulls */
+.bulls-special .category-text {
+    font-size: 0.65rem;
+    color: #fff;
+    opacity: 0.8;
+    letter-spacing: 3px;
+    display: block;
+}
+
+.product-card.bulls-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 5px 0 10px 0;
+    text-shadow: 2px 2px 0px #000; /* Efeito de recorte no texto */
+}
+
+.product-card.bulls-special .price {
+    color: #fff;
+    background: rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+/* Botão Preto com Hover Vermelho */
+.product-card.bulls-special .btn-add {
+    background: #000;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.product-card.bulls-special .btn-add:hover {
+    background: #fff;
+    color: #ce1141;
+    transform: scale(1.02);
+}
+
+/* Marca d'água "BULLS" ao fundo */
+.bg-bulls {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.15); /* Preto transparente */
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: -5px;
+}
+
+/* Estilo Base do Card Boston Celtics */
+.product-card.celtics-special {
+    position: relative;
+    background: linear-gradient(135deg, #007A33 0%, #004d20 100%); /* Verde Celtics */
+    border: 2px solid #BA9653; /* Dourado da Logo/Troféu */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de Hover */
+.product-card.celtics-special:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 122, 51, 0.4);
+    border-color: #fff;
+}
+
+/* Badge (Etiqueta Dourada) */
+.product-card.celtics-special .card-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #BA9653;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Imagem do Produto */
+.product-card.celtics-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,0.5));
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos Celtics */
+.celtics-special .category-text {
+    font-size: 0.65rem;
+    color: #BA9653;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+}
+
+.product-card.celtics-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 5px 0 10px 0;
+}
+
+.product-card.celtics-special .price {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+/* Botão Branco/Verde */
+.product-card.celtics-special .btn-add {
+    background: #fff;
+    color: #007A33;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.product-card.celtics-special .btn-add:hover {
+    background: #BA9653;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Marca d'água ao fundo */
+.bg-celtics {
+    position: absolute;
+    top: 10%;
+    left: -5%;
+    font-size: 9rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+    transform: rotate(-15deg);
+}
+/* Estilo Base do Card Denver Nuggets */
+.product-card.nuggets-special {
+    position: relative;
+    background: linear-gradient(135deg, #0E2240 0%, #1d3a6d 100%); /* Azul Denver */
+    border: 2px solid #FEC524; /* Ouro Denver */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de Hover */
+.product-card.nuggets-special:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(14, 34, 64, 0.8);
+    border-color: #fff;
+}
+
+/* Badge (Etiqueta Ouro/Azul) */
+.product-card.nuggets-special .card-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #FEC524;
+    color: #0E2240;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+/* Imagem do Produto */
+.product-card.nuggets-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.5));
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos Nuggets */
+.nuggets-special .category-text {
+    font-size: 0.65rem;
+    color: #FEC524;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+}
+
+.product-card.nuggets-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 5px 0 10px 0;
+}
+
+.product-card.nuggets-special .price {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+/* Botão Azul Marinho */
+.product-card.nuggets-special .btn-add {
+    background: #FEC524;
+    color: #0E2240;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.product-card.nuggets-special .btn-add:hover {
+    background: #fff;
+    color: #0E2240;
+}
+
+/* Marca d'água com o número 15 do Jokic */
+.bg-nuggets {
+    position: absolute;
+    bottom: -10px;
+    right: -5%;
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(254, 197, 36, 0.05); /* Ouro muito suave */
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+/* Estilo Base do Card Premier League */
+.product-card.premier-special {
+    position: relative;
+    background: linear-gradient(135deg, #3d195b 0%, #1e0b2e 100%); /* Roxo Premier League */
+    border: 2px solid #00ff85; /* Ciano/Verde Neon da PL */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Container da FIFA/Futebol */
+.carousel-container {
+    display: flex;             /* Coloca os cards um ao lado do outro */
+    flex-direction: row;       /* Garante a direção em linha */
+    gap: 20px;                 /* Espaço entre os cards */
+    padding: 30px 5%;          /* Espaço nas laterais e respiro para a sombra */
+    overflow-x: auto;          /* Ativa a rolagem lateral */
+    scroll-behavior: smooth;   /* Rolagem suave ao navegar */
+    scrollbar-width: none;     /* Esconde a barra no Firefox */
+    align-items: flex-start;   /* Alinha os cards pelo topo */
+}
+
+/* Esconde a barra de rolagem no Chrome e Safari */
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Garante que os cards da FIFA mantenham o tamanho e não esmaguem */
+.carousel-container .product-card {
+    min-width: 300px;          /* Largura fixa para cada card */
+    flex-shrink: 0;            /* Impede que o flexbox diminua o card */
+    margin: 0;                 /* Remove margens extras que podem atrapalhar */
+}
+/* Efeito de Hover */
+.product-card.premier-special:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 255, 133, 0.2);
+    border-color: #fff;
+}
+
+/* Badge (Etiqueta Ciano) */
+.product-card.premier-special .card-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #00ff85;
+    color: #3d195b;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+/* Imagem do Produto */
+.product-card.premier-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.6));
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos Premier League */
+.premier-special .category-text {
+    font-size: 0.65rem;
+    color: #00ff85;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+}
+
+.product-card.premier-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 5px 0 10px 0;
+}
+
+
+
+/* Botão Neon */
+.product-card.premier-special .btn-add {
+    background: #00ff85;
+    color: #3d195b;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.product-card.premier-special .btn-add:hover {
+    background: #fff;
+    color: #3d195b;
+    box-shadow: 0 0 20px rgba(0, 255, 133, 0.5);
+}
+
+/* Marca d'água "PL" ou "LION" */
+.bg-lion {
+    position: absolute;
+    bottom: -10px;
+    right: -5%;
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(0, 255, 133, 0.04);
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+/* Estilo Base do Card Serie A */
+.product-card.serie-a-special {
+    position: relative;
+    background: radial-gradient(circle at center, #005aa7 0%, #002d5a 100%); /* Azul Oficial Serie A */
+    border: 2px solid #00adef; /* Azul Ciano da TIM */
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 440px !important;
+}
+
+/* Efeito de Hover */
+.product-card.serie-a-special:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 90, 167, 0.5);
+    border-color: #ffffff;
+}
+
+/* Badge (Etiqueta com as cores da Itália no detalhe) */
+.product-card.serie-a-special .card-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffffff;
+    color: #002d5a;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 5;
+    border-left: 4px solid #009246; /* Verde Italia */
+    border-right: 4px solid #ce2b37; /* Vermelho Italia */
+}
+
+/* Imagem do Produto */
+.product-card.serie-a-special img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.5));
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Textos */
+.serie-a-special .category-text {
+    font-size: 0.65rem;
+    color: #00adef;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+}
+
+.product-card.serie-a-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 5px 0 10px 0;
+}
+
+.product-card.serie-a-special .price {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+/* Botão Estilizado */
+.product-card.serie-a-special .btn-add {
+    background: #00adef;
+    color: #fff;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.product-card.serie-a-special .btn-add:hover {
+    background: #fff;
+    color: #005aa7;
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Marca d'água "A" Gigante */
+.bg-serie-a {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    font-family: 'Arial Black', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+}
+/* Estilo Base do Card Brasileirão */
+.product-card.brasileirao-special {
+    position: relative;
+    background: linear-gradient(135deg, #004225 0%, #002414 100%); /* Verde Floresta Profundo */
+    border: 2px solid #FFDF00; /* Amarelo Ouro Canário */
+    overflow: hidden;
+    padding: 30px; /* Mais espaço interno */
+    min-width: 380px; /* Card maior conforme solicitado */
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de Hover */
+.product-card.brasileirao-special:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 66, 37, 0.6);
+    border-color: #fff;
+}
+
+/* Tag Superior (Verde/Amarelo) */
+.product-card.brasileirao-special .card-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #FFDF00;
+    color: #004225;
+    font-size: 0.8rem;
+    font-weight: 900;
+    padding: 6px 15px;
+    border-radius: 5px;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Imagem da Camisa GIGANTE */
+.product-card.brasileirao-special img {
+    width: 100%;
+    height: 350px; /* Aumentado para o novo padrão */
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6));
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Informações */
+.brasileirao-special .category-text {
+    font-size: 0.75rem;
+    color: #FFDF00;
+    letter-spacing: 3px;
+    font-weight: bold;
+    display: block;
+}
+
+.product-card.brasileirao-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.9rem; /* Título maior */
+    color: #fff;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.product-card.brasileirao-special .price {
+    color: #fff;
+    font-size: 2.2rem; /* Preço bem destacado */
+    font-weight: 900;
+}
+
+/* Botão Amarelo Impactante */
+.product-card.brasileirao-special .btn-add {
+    background: #FFDF00;
+    color: #004225;
+    border: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+    padding: 18px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.product-card.brasileirao-special .btn-add:hover {
+    background: #fff;
+    color: #004225;
+    transform: scale(1.02);
+}
+
+/* Marca d'água "BR" */
+.bg-br {
+    position: absolute;
+    bottom: -20px;
+    left: 5%;
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(255, 223, 0, 0.04);
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Estilo Base do Card La Liga */
+.product-card.laliga-special {
+    position: relative;
+    background: linear-gradient(135deg, #ff4b4b 0%, #252525 100%); /* Vermelho Coral para Grafite */
+    border: 2px solid #ff4b4b;
+    overflow: hidden;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito de Hover */
+.product-card.laliga-special:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(255, 75, 75, 0.3);
+    border-color: #ffffff;
+}
+
+/* Tag Superior (Branco e Vermelho) */
+.product-card.laliga-special .card-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ffffff;
+    color: #ff4b4b;
+    font-size: 0.8rem;
+    font-weight: 900;
+    padding: 6px 15px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+/* Imagem da Camisa */
+.product-card.laliga-special img {
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6));
+    margin-bottom: 15px;
+    z-index: 2;
+}
+
+/* Textos La Liga */
+.laliga-special .category-text {
+    font-size: 0.75rem;
+    color: #ffffff;
+    opacity: 0.8;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.product-card.laliga-special h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.product-card.laliga-special .price {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+
+/* Botão Elegante */
+.product-card.laliga-special .btn-add {
+    background: #ffffff;
+    color: #ff4b4b;
+    border: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+    padding: 18px;
+    width: 100%;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.product-card.laliga-special .btn-add:hover {
+    background: #252525;
+    color: #ffffff;
+    transform: scale(1.02);
+}
+
+/* Marca d'água "LL" (Logo da La Liga) */
+.bg-laliga {
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    font-family: 'Arial Black', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+}
+/* Estilo Base para Texto de Fundo NFL */
+.bg-nfl-text {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    font-family: 'Impact', sans-serif;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* KANSAS CITY CHIEFS (Vermelho e Ouro) */
+.product-card.chiefs-special {
+    background: linear-gradient(135deg, #E31837 0%, #a30b22 100%);
+    border: 2px solid #FFB81C;
+}
+.chiefs-special .btn-add { background: #FFB81C; color: #E31837; }
+
+/* 49ERS (Escarlate e Ouro Metálico) */
+.product-card.niners-special {
+    background: linear-gradient(135deg, #AA0000 0%, #7d0000 100%);
+    border: 2px solid #B3995D;
+}
+.niners-special .btn-add { background: #B3995D; color: #AA0000; }
+
+/* DALLAS COWBOYS (Azul Marinho e Prata) */
+.product-card.cowboys-special {
+    background: linear-gradient(135deg, #003594 0%, #002260 100%);
+    border: 2px solid #869397;
+}
+.cowboys-special .btn-add { background: #869397; color: #003594; }
+
+/* MIAMI DOLPHINS (Aqua e Laranja) */
+.product-card.dolphins-special {
+    background: linear-gradient(135deg, #008E97 0%, #006b72 100%);
+    border: 2px solid #FC4C02;
+}
+.dolphins-special .btn-add { background: #FC4C02; color: #fff; }
+
+/* Efeito Hover Geral para NFL */
+.product-card[class*="-special"]:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    border-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+.btn-add {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add :hover { 
+    background: #fff;
+     color: #000; 
+}
+
+.bola :hover{
+padding: 100px;
+        
+}
+/* Estado Inicial: Escondido e um pouco abaixo */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+/* Estado Final: Quando a classe 'active' for adicionada via JS */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Adicionando um atraso leve nos cards para um efeito cascata */
+.reveal.active .product-card {
+    transition-delay: calc(0.1s * var(--i));
+}
+/* --- FOOTER BASE --- */
+.main-footer {
+    background-color: #050505;
+    color: #fff;
+    padding: 60px 0 20px 0;
+    border-top: 1px solid #222;
+    margin-top: 80px; /* Espaço para não colar nos cards */
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Cria colunas que se ajustam sozinhas (mínimo 250px) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.footer-logo span { color: #ffcc00; }
+
+.footer-col h3 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+.footer-col p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Links */
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+    color: #888;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+
+/* Newsletter Form */
+.footer-form {
+    display: flex;
+    gap: 5px;
+}
+.footer-form input {
+    background: #111;
+    border: 1px solid #333;
+    padding: 10px;
+    color: #fff;
+    flex: 1;
+}
+.footer-form button {
+    background: #ffcc00;
+    border: none;
+    padding: 0 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Rodapé Final */
+.footer-bottom {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para celular */
+    gap: 20px;
+    color: #444;
+    font-size: 0.8rem;
+}
+
+.payment-methods {
+    font-size: 1.5rem;
+    display: flex;
+    gap: 15px;
+    color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+/* Responsividade rápida */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3.5rem; }
+    .hero-title span { font-size: 4.5rem; }
+    .carousel-container { margin-top: -100px; }
+}
